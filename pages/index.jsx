@@ -14,7 +14,7 @@ export default function Home() {
           name="description"
           content="A working notes app. Inspired by the design from @Ariuka_dsgn"
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="https://fav.farm/🪶" />
       </Head>
 
       <main className="flex h-full">
@@ -23,7 +23,7 @@ export default function Home() {
             <Sidebar />
           </aside>
 
-          <article className="mx-auto">
+          <article className="mx-auto h-full flex flex-col">
             <Header />
             <ListNotes />
             <Footer />

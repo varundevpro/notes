@@ -3,7 +3,7 @@ import { useNotesContext } from "../context/notes";
 import { NoteEdit } from "./NoteEdit";
 import { NoteView } from "./NoteView";
 
-export const Note = ({ id, ...props }) => {
+export const Note = ({ ...props }) => {
   const [isEditing, setIsEditing] = useState(false);
   const { onUpdate } = useNotesContext();
 
@@ -14,7 +14,6 @@ export const Note = ({ id, ...props }) => {
     }
 
     onUpdate({
-      id,
       ...props,
       content: text,
       date: new Date().toISOString(),
@@ -22,25 +21,20 @@ export const Note = ({ id, ...props }) => {
     setIsEditing(false);
   };
 
-  const handleEdit = () => {
-    setIsEditing(true);
+  const toggleEditing = () => {
+    setIsEditing((prev) => !prev);
   };
 
   const handleFav = () => {
     onUpdate({
-      id,
       ...props,
-      isFav: !props.isFav,
+      isFav: props.isFav ? 0 : 1,
     });
   };
 
-  const handleCancel = () => {
-    setIsEditing(false);
-  };
-
   return isEditing ? (
-    <NoteEdit {...props} onSave={handleUpdate} onCancel={handleCancel} />
+    <NoteEdit {...props} onSave={handleUpdate} onCancel={toggleEditing} />
   ) : (
-    <NoteView {...props} onEdit={handleEdit} onFavChange={handleFav} />
+    <NoteView {...props} onEdit={toggleEditing} onFavChange={handleFav} />
   );
 };

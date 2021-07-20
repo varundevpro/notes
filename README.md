@@ -15,9 +15,9 @@ This is a simple notes web application. Created using NextJS, Tailwind CSS
 
 ## Future Goals
 
-- Store notes using Indexed DB
-- Add feature to delete a note
-- Add feature to store deleted notes in trash
+- [x] Store notes using Indexed DB
+- [ ] Add feature to delete a note
+- [ ] Add feature to store deleted notes in trash
 
 # Repository Owner
 

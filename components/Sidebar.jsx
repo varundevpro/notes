@@ -1,3 +1,4 @@
+import { TrashIcon } from "@heroicons/react/outline";
 import { PlusIcon } from "@heroicons/react/solid";
 import { useState } from "react";
 import { useNotesContext } from "../context/notes";
@@ -5,21 +6,20 @@ import { COLORS } from "../utils/colors";
 
 export const Sidebar = () => {
   const [open, setOpen] = useState(false);
-  const { setShowEmpty } = useNotesContext();
+  const { setShowEmpty, onClear } = useNotesContext();
 
   const handleCreate = (color) => {
     // Create note with `color`
     setShowEmpty({
       color,
       content: "",
-      isFav: false,
+      isFav: 0,
       date: new Date().toISOString(),
-      id: Date.now(),
     });
   };
 
   return (
-    <div className="w-24 flex flex-col items-center">
+    <div className="w-24 h-full flex flex-col items-center">
       {/* Logo */}
       <h2 className="text-lg font-bold py-4 mt-2">Notes</h2>
 
@@ -47,6 +47,16 @@ export const Sidebar = () => {
               </button>
             );
           })}
+      </div>
+
+      <div className="mt-auto mb-8">
+        <button
+          className="rounded-md p-2 bg-gray-100 hover:bg-gray-300 focus:bg-gray-300 hover:shadow-md transition"
+          onClick={onClear}
+        >
+          <span className="sr-only">Delete all</span>
+          <TrashIcon className="w-5 h-5" />
+        </button>
       </div>
     </div>
   );

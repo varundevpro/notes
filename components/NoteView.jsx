@@ -30,6 +30,7 @@ export const NoteView = ({
           )}
           onClick={onFavChange}
         >
+          <span className="sr-only">Toggle Favorite</span>
           {isFav ? (
             <StarSolid className="w-4 h-4" />
           ) : (
@@ -50,6 +51,7 @@ export const NoteView = ({
           className="bg-black text-white hover:bg-gray-900 rounded-full p-3 transition transform hover:scale-105 hover:shadow-lg opacity-0 group-hover:opacity-100 focus:opacity-100"
           onClick={onEdit}
         >
+          <span className="sr-only">Edit note</span>
           <PencilIcon className="w-4 h-4" />
         </button>
       </div>
